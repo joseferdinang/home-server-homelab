@@ -155,14 +155,6 @@ AllowUsers YOUR_LINUX_USER
 - [ ] Implement GitHub Actions for code validation.
 - [ ] Evaluate Proxmox after future hardware upgrades.
 
-## Documentation Rules
-
-- Do not publish public IP addresses.
-- Do not upload credentials, API keys, tokens, or SSH private keys.
-- Use examples such as `192.168.1.X` instead of real network addresses.
-- Document each relevant change through clear Git commits.
-- Record technical incidents and their solutions.
-
 ## Author
 
 José Alfredo Ferdinand Gallardo  
