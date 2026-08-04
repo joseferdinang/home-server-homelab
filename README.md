@@ -88,17 +88,6 @@ seguricon-contabilidad/
 └── credentials/
 ```
 
-Sensitive folders and files must never be uploaded to GitHub.
-
-```gitignore
-.env
-credentials/
-data/
-*.log
-__pycache__/
-venv/
-```
-
 ## Energy Efficiency Strategy
 
 This Home Server uses older hardware, so efficient and stable operation is a priority.
