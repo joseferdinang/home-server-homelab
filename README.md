@@ -1,5 +1,3 @@
-Add Home Server documentation
-
 # Home Server / Home Lab
 
 [![Linux](https://img.shields.io/badge/Linux-Debian_13-A81D33?style=flat-square&logo=debian&logoColor=white)](https://www.debian.org/)
@@ -44,37 +42,41 @@ The server supports Python projects, containerized services, a small operational
                      |       |       |
                      |       |       |
                    SSH    Docker    Storage
+                     |       |       |
+            Administration  Automation  Operational
+               and support   projects    files
+```
 
+## Hardware
 
-Hardware
-| Component        | Specification             |
-| ---------------- | ------------------------- |
-| Processor        | Intel Core i5-2400        |
-| CPU              | 4 cores / 4 threads       |
-| Memory           | Approximately 6 GB RAM    |
-| Storage          | SSD, approximately 224 GB |
-| Network          | Gigabit Ethernet          |
-| Graphics         | Integrated Intel graphics |
-| Operating system | Debian 13                 |
+| Component | Specification |
+|---|---|
+| Processor | Intel Core i5-2400 |
+| CPU | 4 cores / 4 threads |
+| Memory | Approximately 6 GB RAM |
+| Storage | SSD, approximately 224 GB |
+| Network | Gigabit Ethernet |
+| Graphics | Integrated Intel graphics |
+| Operating system | Debian 13 |
 
+## Services
 
-Services
-| Service                | Purpose                                | Status        |
-| ---------------------- | -------------------------------------- | ------------- |
-| Debian 13              | Base operating system                  | Active        |
-| Docker Engine          | Container execution                    | Active        |
-| Docker Compose         | Reproducible service deployments       | Active        |
-| SSH                    | Secure remote administration           | Active        |
-| Tailscale              | Private remote connectivity            | In validation |
-| Python                 | Automation and data processing         | Active        |
-| Seguricon Contabilidad | Python-based Docker automation project | Active        |
-| Local storage          | Operational files and backups          | In progress   |
+| Service | Purpose | Status |
+|---|---|---|
+| Debian 13 | Base operating system | Active |
+| Docker Engine | Container execution | Active |
+| Docker Compose | Reproducible service deployments | Active |
+| SSH | Secure remote administration | Active |
+| Tailscale | Private remote connectivity | In validation |
+| Python | Automation and data processing | Active |
+| Seguricon Contabilidad | Python-based Docker automation project | Active |
+| Local storage | Operational files and backups | In progress |
 
-
-#Docker Project
+## Docker Project
 
 The server runs a Python automation project using Docker.
 
+```text
 seguricon-contabilidad/
 ├── main.py
 ├── Dockerfile
@@ -84,24 +86,36 @@ seguricon-contabilidad/
 ├── tests/
 ├── data/
 └── credentials/
-               
-                        |       |
-Energy Efficiency Strategy
+```
+
+Sensitive folders and files must never be uploaded to GitHub.
+
+```gitignore
+.env
+credentials/
+data/
+*.log
+__pycache__/
+venv/
+```
+
+## Energy Efficiency Strategy
 
 This Home Server uses older hardware, so efficient and stable operation is a priority.
 
 Current and planned measures:
 
-Dedicated AMD graphics card removed to reduce power consumption.
-Integrated Intel graphics used instead of a dedicated GPU.
-Energy profiles evaluated with TLP.
-Power consumption reviewed with PowerTOP.
-Unnecessary startup services disabled.
-Docker used to isolate and simplify service management.
-Periodic monitoring of CPU, memory, storage, and container usage.
+- Dedicated AMD graphics card removed to reduce power consumption.
+- Integrated Intel graphics used instead of a dedicated GPU.
+- Energy profiles evaluated with TLP.
+- Power consumption reviewed with PowerTOP.
+- Unnecessary startup services disabled.
+- Docker used to isolate and simplify service management.
+- Periodic monitoring of CPU, memory, storage, and container usage.
 
 Recommended verification commands:
 
+```bash
 sudo powertop
 sudo tlp-stat -s
 uptime
@@ -109,57 +123,47 @@ free -h
 df -h
 docker stats
 systemctl --type=service --state=running
+```
 
-Security Principles
-SSH access should use key-based authentication.
-Direct root access through SSH should remain disabled.
-Remote access should use Tailscale instead of exposing unnecessary services.
-Passwords, API tokens, private keys, and business data must remain outside the repository.
-Operating system and Docker images should be updated regularly.
-Important configurations should be backed up and tested.
+## Security Principles
+
+- SSH access should use key-based authentication.
+- Direct root access through SSH should remain disabled.
+- Remote access should use Tailscale instead of exposing unnecessary services.
+- Passwords, API tokens, private keys, and business data must remain outside the repository.
+- Operating system and Docker images should be updated regularly.
+- Important configurations should be backed up and tested.
 
 Example SSH hardening settings:
 
+```text
 PermitRootLogin no
 PasswordAuthentication no
 PubkeyAuthentication yes
 AllowUsers YOUR_LINUX_USER
+```
 
-Security Principles
-SSH access should use key-based authentication.
-Direct root access through SSH should remain disabled.
-Remote access should use Tailscale instead of exposing unnecessary services.
-Passwords, API tokens, private keys, and business data must remain outside the repository.
-Operating system and Docker images should be updated regularly.
-Important configurations should be backed up and tested.
+## Roadmap
 
-Example SSH hardening settings:
+- [ ] Document server network topology.
+- [ ] Validate Tailscale remote access.
+- [ ] Implement automated encrypted backups.
+- [ ] Add uptime and resource monitoring.
+- [ ] Configure alerts for storage, temperature, and service failures.
+- [ ] Create incident response notes.
+- [ ] Add automated tests for Python projects.
+- [ ] Implement GitHub Actions for code validation.
+- [ ] Evaluate Proxmox after future hardware upgrades.
 
-PermitRootLogin no
-PasswordAuthentication no
-PubkeyAuthentication yes
-AllowUsers YOUR_LINUX_USER
-Roadmap
- Document server network topology.
- Validate Tailscale remote access.
- Implement automated encrypted backups.
- Add uptime and resource monitoring.
- Configure alerts for storage, temperature, and service failures.
- Create incident response notes.
- Add automated tests for Python projects.
- Implement GitHub Actions for code validation.
- Evaluate Proxmox after future hardware upgrades.
-Documentation Rules
-Do not publish public IP addresses.
-Do not upload credentials, API keys, tokens, or SSH private keys.
-Use examples such as 192.168.1.X instead of real network addresses.
-Document each relevant change through clear Git commits.
-Record technical incidents and their solutions.
-Author
+## Documentation Rules
 
-José Alfredo Ferdinand Gallardo
+- Do not publish public IP addresses.
+- Do not upload credentials, API keys, tokens, or SSH private keys.
+- Use examples such as `192.168.1.X` instead of real network addresses.
+- Document each relevant change through clear Git commits.
+- Record technical incidents and their solutions.
+
+## Author
+
+José Alfredo Ferdinand Gallardo  
 Analista de Sistemas TI | Linux, Docker, Python, SQL y Análisis de Datos
-
-              
-Administration  Automation  Operational
-                 and support   projects    files
