@@ -46,7 +46,7 @@ The server supports Python projects, containerized services, a small operational
                    SSH    Docker    Storage
 
 
-#Hardware
+Hardware
 | Component        | Specification             |
 | ---------------- | ------------------------- |
 | Processor        | Intel Core i5-2400        |
@@ -58,7 +58,7 @@ The server supports Python projects, containerized services, a small operational
 | Operating system | Debian 13                 |
 
 
-#Service
+Services
 | Service                | Purpose                                | Status        |
 | ---------------------- | -------------------------------------- | ------------- |
 | Debian 13              | Base operating system                  | Active        |
